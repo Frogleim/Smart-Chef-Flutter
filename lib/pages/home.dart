@@ -17,7 +17,17 @@ class _HomeState extends State<Home> {
         children: [
           const Padding(
             padding: EdgeInsets.all(80),
-            child: Text('Home'),
+            child: Text(
+              "Delicious food for you",
+              style: const TextStyle(
+                fontFamily: "SF Pro Rounded",
+                fontSize: 34,
+                fontWeight: FontWeight.w700,
+                color: Color(0xff000000),
+                height: 82 / 34,
+              ),
+              textAlign: TextAlign.left,
+            ),
           ),
           const SizedBox(
             height: 50,

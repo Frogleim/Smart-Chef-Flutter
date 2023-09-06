@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_chef/pages/home.dart';
+import 'package:smart_chef/pages/intro_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const Home(),
+      home: const Welcome(),
     );
   }
 }
