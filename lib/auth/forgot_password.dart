@@ -1,27 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:smart_chef/auth/forgot_password.dart';
 import 'package:smart_chef/auth/registration_page.dart';
 import 'package:smart_chef/models/constants.dart';
 import 'package:smart_chef/models/firebaseAuth.dart';
-import 'package:smart_chef/pages/home.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class ForgotPassword extends StatefulWidget {
+  const ForgotPassword({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<ForgotPassword> createState() => _ForgotPasswordState();
 }
 
-class _LoginState extends State<Login> {
+class _ForgotPasswordState extends State<ForgotPassword> {
   final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +39,7 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 100,
+                      height: 150,
                     ),
                     Center(
                       child: CircleAvatar(
@@ -64,9 +54,9 @@ class _LoginState extends State<Login> {
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 300),
+                          padding: const EdgeInsets.only(right: 200),
                           child: Text(
-                            'LogIn',
+                            'Reset Password',
                             style: TextStyle(
                               fontFamily: "SF Pro Text",
                               fontSize: 18,
@@ -95,48 +85,6 @@ class _LoginState extends State<Login> {
                                         color: Colors.grey.shade400))),
                           ),
                         ),
-                        const SizedBox(
-                          height: 25,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 25),
-                          child: TextField(
-                            obscureText: true,
-                            controller: _passwordController,
-                            decoration: InputDecoration(
-                                hintText: 'Password',
-                                enabledBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide(
-                                        color: Colors.grey.shade400)),
-                                focusedBorder: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(12),
-                                    borderSide: BorderSide(
-                                        color: Colors.grey.shade400))),
-                          ),
-                        ),
-                        const SizedBox(
-                          height: 25,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(right: 200),
-                          child: GestureDetector(
-                            onTap: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
-                            },
-                            child: Text(
-                              'Forgot passcode?',
-                              style: TextStyle(
-                                fontFamily: "SF Pro Text",
-                                fontSize: 17,
-                                fontWeight: FontWeight.w600,
-                                color: mainColor,
-                                height: 20 / 17,
-                              ),
-                            ),
-                          ),
-                        ),
                       ],
                     )
                   ],
@@ -150,22 +98,19 @@ class _LoginState extends State<Login> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18),
                 ),
-                fillColor: Colors.white,
+                fillColor: whiteColor,
                 onPressed: () {
-                  signIn(_emailController.text.trim(),
-                          _passwordController.text.trim())
-                      .then((value) => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Home())));
+                  resetPassword(_emailController.text.trim());
                 },
-                child: const SizedBox(
+                child: SizedBox(
                   height: 60, // Set your desired height here
                   child: Center(
                     child: Text(
-                      'LogIn',
+                      'Send',
                       style: TextStyle(
                           height: 20 / 17,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFFFF460A),
+                          color: mainColor,
                           fontSize: 17),
                     ),
                   ),
@@ -176,15 +121,15 @@ class _LoginState extends State<Login> {
               right: 135,
               child: GestureDetector(
                 onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => SignUp()));
+                  Navigator.of(context).push(
+                      MaterialPageRoute(builder: (context) => const SignUp()));
                 },
-                child: const Text(
+                child: Text(
                   'Create account',
                   style: TextStyle(
                       height: 20 / 17,
                       fontWeight: FontWeight.w600,
-                      color: Colors.white,
+                      color: whiteColor,
                       fontSize: 17),
                 ),
               ))

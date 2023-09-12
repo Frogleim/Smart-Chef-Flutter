@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
-import 'package:smart_chef/auth/forgot_password.dart';
-import 'package:smart_chef/auth/registration_page.dart';
+import 'package:smart_chef/auth/login.dart';
 import 'package:smart_chef/models/constants.dart';
 import 'package:smart_chef/models/firebaseAuth.dart';
 import 'package:smart_chef/pages/home.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<Login> createState() => _LoginState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginState extends State<Login> {
+class _SignUpState extends State<SignUp> {
   final _emailController = TextEditingController();
   final _passwordController = TextEditingController();
+  final _repasswordController = TextEditingController();
 
   @override
   void dispose() {
     _emailController.dispose();
     _passwordController.dispose();
+    _repasswordController.dispose();
     super.dispose();
   }
 
@@ -36,37 +37,34 @@ class _LoginState extends State<Login> {
             right: 0,
             child: Container(
                 height: 550,
-                decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.only(
+                decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft:
                           Radius.circular(40.0), // Adjust the radius as needed
                       bottomRight:
                           Radius.circular(40.0), // Adjust the radius as needed
                     ),
-                    color: Colors
-                        .white // Set the background color of the container
+                    color:
+                        whiteColor // Set the background color of the container
                     ),
                 child: Column(
                   children: [
-                    const SizedBox(
-                      height: 100,
-                    ),
-                    Center(
-                      child: CircleAvatar(
-                          radius: 50,
-                          backgroundColor: whiteColor,
-                          child: Image.asset(
-                              'lib/images/Bella Olonje logo 111 1.png')),
-                    ),
-                    const SizedBox(
-                      height: 75,
+                    Padding(
+                      padding: const EdgeInsets.only(top: 50, right: 300),
+                      child: Center(
+                        child: CircleAvatar(
+                            radius: 30,
+                            backgroundColor: whiteColor,
+                            child: Image.asset(
+                                'lib/images/Bella Olonje logo 111 1.png')),
+                      ),
                     ),
                     Column(
                       children: [
                         Padding(
-                          padding: const EdgeInsets.only(right: 300),
+                          padding: const EdgeInsets.only(top: 20, left: 200),
                           child: Text(
-                            'LogIn',
+                            'Create account',
                             style: TextStyle(
                               fontFamily: "SF Pro Text",
                               fontSize: 18,
@@ -119,14 +117,34 @@ class _LoginState extends State<Login> {
                           height: 25,
                         ),
                         Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 25),
+                          child: TextField(
+                            obscureText: true,
+                            controller: _repasswordController,
+                            decoration: InputDecoration(
+                                hintText: 'Re Password',
+                                enabledBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400)),
+                                focusedBorder: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(12),
+                                    borderSide: BorderSide(
+                                        color: Colors.grey.shade400))),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 25,
+                        ),
+                        Padding(
                           padding: const EdgeInsets.only(right: 200),
                           child: GestureDetector(
                             onTap: () {
                               Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => ForgotPassword()));
+                                  builder: (context) => const Login()));
                             },
                             child: Text(
-                              'Forgot passcode?',
+                              'Have an account?',
                               style: TextStyle(
                                 fontFamily: "SF Pro Text",
                                 fontSize: 17,
@@ -150,44 +168,28 @@ class _LoginState extends State<Login> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(18),
                 ),
-                fillColor: Colors.white,
+                fillColor: whiteColor,
                 onPressed: () {
-                  signIn(_emailController.text.trim(),
+                  signUp(_emailController.text.trim(),
                           _passwordController.text.trim())
                       .then((value) => Navigator.of(context).push(
-                          MaterialPageRoute(builder: (context) => Home())));
+                          MaterialPageRoute(
+                              builder: (context) => const Home())));
                 },
-                child: const SizedBox(
+                child: SizedBox(
                   height: 60, // Set your desired height here
                   child: Center(
                     child: Text(
-                      'LogIn',
+                      'Sign Up',
                       style: TextStyle(
                           height: 20 / 17,
                           fontWeight: FontWeight.w600,
-                          color: Color(0xFFFF460A),
+                          color: mainColor,
                           fontSize: 17),
                     ),
                   ),
                 ),
               )),
-          Positioned(
-              bottom: 80,
-              right: 135,
-              child: GestureDetector(
-                onTap: () {
-                  Navigator.of(context)
-                      .push(MaterialPageRoute(builder: (context) => SignUp()));
-                },
-                child: const Text(
-                  'Create account',
-                  style: TextStyle(
-                      height: 20 / 17,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.white,
-                      fontSize: 17),
-                ),
-              ))
         ],
       ),
     );

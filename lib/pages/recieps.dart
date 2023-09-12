@@ -28,13 +28,8 @@ class _ReciepsState extends State<Recieps> {
               ),
             );
           } else {
-            return GridView.builder(
+            return ListView.builder(
               itemCount: snapshot.data.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 5,
-                mainAxisSpacing: 20,
-              ),
               itemBuilder: (context, index) {
                 var recipe =
                     snapshot.data[index].reciep; // Corrected variable name

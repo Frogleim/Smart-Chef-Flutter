@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:smart_chef/auth/login.dart';
+import 'package:smart_chef/models/constants.dart';
 
 class Welcome extends StatefulWidget {
   const Welcome({super.key});
@@ -12,7 +13,7 @@ class _WelcomeState extends State<Welcome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFFF4B3A),
+        backgroundColor: mainColor,
         body: Stack(
           children: [
             Positioned(
@@ -23,10 +24,7 @@ class _WelcomeState extends State<Welcome> {
                 child: Image.asset('lib/images/Bella Olonje logo 111 1.png'),
               ),
             ),
-            // const SizedBox(
-            //   height: 30,
-            // ),
-            const Positioned(
+            Positioned(
               top: 175,
               left: 40,
               child: Text(
@@ -34,7 +32,7 @@ class _WelcomeState extends State<Welcome> {
                 style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
-                    color: Colors.white,
+                    color: whiteColor,
                     fontFamily: "SF Pro Rounded"),
               ),
             ),
@@ -53,7 +51,6 @@ class _WelcomeState extends State<Welcome> {
                 bottom: 0,
                 right: 10,
                 child: Image.asset('lib/images/Rectangle 5.png')),
-
             Positioned(
                 bottom: 0,
                 left: 10,
@@ -66,12 +63,12 @@ class _WelcomeState extends State<Welcome> {
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(18),
                   ),
-                  fillColor: Colors.white,
+                  fillColor: whiteColor,
                   onPressed: () {
-                    Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (context) => Login()));
+                    Navigator.of(context).push(
+                        MaterialPageRoute(builder: (context) => const Login()));
                   },
-                  child: const SizedBox(
+                  child: SizedBox(
                     height: 50, // Set your desired height here
                     child: Center(
                       child: Text(
@@ -79,7 +76,7 @@ class _WelcomeState extends State<Welcome> {
                         style: TextStyle(
                             height: 20 / 17,
                             fontWeight: FontWeight.w600,
-                            color: Color(0xFFFF460A),
+                            color: mainColor,
                             fontSize: 17),
                       ),
                     ),
