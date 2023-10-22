@@ -70,6 +70,7 @@ flutter:
     - lib/images/Bella Olonje logo 111 1.png
     - lib/images/Rectangle 3.png
     - lib/images/Rectangle 5.png
+    - lib/images/cartoon.png
 
   # To add assets to your application, add an assets section, like this:
   # assets:

@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
+import 'package:smart_chef/models/constants.dart';
 import 'package:smart_chef/pages/recieps.dart';
 
 class Home extends StatefulWidget {
@@ -13,65 +15,72 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          const Padding(
-            padding: EdgeInsets.all(80),
-            child: Text(
-              "Delicious food for you",
-              style: const TextStyle(
-                fontFamily: "SF Pro Rounded",
-                fontSize: 34,
-                fontWeight: FontWeight.w700,
-                color: Color(0xff000000),
-                height: 82 / 34,
-              ),
-              textAlign: TextAlign.left,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(top: 50),
+              child: Lottie.network(
+                  'https://lottie.host/9cbcc044-e690-4e89-9afa-a784ba52859a/bNN0U1rw7l.json',
+                  repeat: false),
             ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: TextField(
-              controller: _ingredientsContorller,
-              decoration: InputDecoration(
-                  enabledBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(12)),
-                  filled: true,
-                  hintStyle: const TextStyle(color: Colors.black),
-                  hintText: "Enter your ingredients"),
-            ),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          Container(
-            padding: const EdgeInsets.all(25),
-            margin: const EdgeInsets.symmetric(horizontal: 25),
-            width: double.infinity,
-            child: RawMaterialButton(
-              onPressed: () {
-                print("Clicked!");
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => Recieps(
-                        ingredient: _ingredientsContorller.text.trim())));
-              },
-              fillColor: Colors.black,
-              padding: const EdgeInsets.symmetric(vertical: 20),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12)),
-              child: const Text(
-                'Get Recieps',
-                style: TextStyle(color: Colors.white),
+            Padding(
+              padding: const EdgeInsets.only(top: 52, right: 150),
+              child: Text(
+                "Don't know what cook?",
+                style: TextStyle(
+                  fontFamily: "SF Pro Rounded",
+                  fontSize: 20,
+                  fontWeight: FontWeight.w700,
+                  color: blackColor,
+                  height: 82 / 34,
+                ),
+                textAlign: TextAlign.left,
               ),
             ),
-          )
-        ],
+            const SizedBox(
+              height: 50,
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextField(
+                controller: _ingredientsContorller,
+                decoration: InputDecoration(
+                    hintText: 'Enter Ingredients',
+                    enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey.shade400)),
+                    focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(12),
+                        borderSide: BorderSide(color: Colors.grey.shade400))),
+              ),
+            ),
+            const SizedBox(
+              height: 50,
+            ),
+            Container(
+              padding: const EdgeInsets.all(25),
+              margin: const EdgeInsets.symmetric(horizontal: 2),
+              width: double.infinity,
+              child: RawMaterialButton(
+                onPressed: () {
+                  print("Clicked!");
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => Recieps(
+                          ingredient: _ingredientsContorller.text.trim())));
+                },
+                fillColor: mainColor,
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12)),
+                child: const Text(
+                  'Get Recieps',
+                  style: TextStyle(color: Colors.white),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

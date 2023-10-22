@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 import 'package:smart_chef/auth/forgot_password.dart';
 import 'package:smart_chef/auth/registration_page.dart';
 import 'package:smart_chef/models/constants.dart';
@@ -49,17 +50,18 @@ class _LoginState extends State<Login> {
                 child: Column(
                   children: [
                     const SizedBox(
-                      height: 100,
+                      height: 50,
                     ),
                     Center(
                       child: CircleAvatar(
-                          radius: 50,
+                          radius: 80,
                           backgroundColor: whiteColor,
-                          child: Image.asset(
-                              'lib/images/Bella Olonje logo 111 1.png')),
+                          child: Lottie.network(
+                              'https://lottie.host/bc01677e-04b4-41f6-b964-66d25e8f355f/582bMMLyyE.json',
+                              repeat: false)),
                     ),
                     const SizedBox(
-                      height: 75,
+                      height: 50,
                     ),
                     Column(
                       children: [
@@ -152,6 +154,8 @@ class _LoginState extends State<Login> {
                 ),
                 fillColor: Colors.white,
                 onPressed: () {
+                  Lottie.network(
+                      'https://lottie.host/78b1e017-ab59-4cc1-b71d-99fc9a491dcb/CZec4kRg9T.json');
                   signIn(_emailController.text.trim(),
                           _passwordController.text.trim())
                       .then((value) => Navigator.of(context).push(

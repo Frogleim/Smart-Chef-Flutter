@@ -24,27 +24,27 @@ class _WelcomeState extends State<Welcome> {
                 child: Image.asset('lib/images/Bella Olonje logo 111 1.png'),
               ),
             ),
+            // Positioned(
+            //   top: 175,
+            //   left: 40,
+            //   child: Text(
+            //     "Welcome\nto SmartChef",
+            //     style: TextStyle(
+            //         fontSize: 30,
+            //         fontWeight: FontWeight.bold,
+            //         color: whiteColor,
+            //         fontFamily: "SF Pro Rounded"),
+            //   ),
+            // ),
+            // Positioned(
+            //     bottom: 100,
+            //     right: 20,
+            //     child: Image.asset('lib/images/ToyFaces_Tansparent_BG_29.png')),
             Positioned(
-              top: 175,
-              left: 40,
-              child: Text(
-                "Welcome\nto SmartChef",
-                style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: whiteColor,
-                    fontFamily: "SF Pro Rounded"),
-              ),
-            ),
-            Positioned(
-                bottom: 100,
-                right: 20,
-                child: Image.asset('lib/images/ToyFaces_Tansparent_BG_29.png')),
-            Positioned(
-                bottom: 80,
+                bottom: 150,
                 left: 20,
                 child: Image.asset(
-                  'lib/images/ToyFaces_Tansparent_BG_49.png',
+                  'lib/images/cartoon.png',
                   height: 420,
                 )),
             Positioned(
