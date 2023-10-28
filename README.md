@@ -1,6 +1,6 @@
-# smart_chef
+# SmartChef
 
-A new Flutter project.
+SmartChef is your ultimate culinary companion, revolutionizing the way you discover and enjoy delicious recipes. Whether you're a foodie on the hunt for exciting new dishes or a busy home cook seeking mealtime inspiration, SmartChef is here to guide you on a mouthwatering journey of flavors, ingredients, and culinary creativity.
 
 ## Getting Started
 
