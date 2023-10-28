@@ -42,7 +42,11 @@ class _ReciepsState extends State<Recieps> {
                     onTap: () {
                       print(recipe);
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => Description(recUrl: recUrl)));
+                          builder: (context) => Description(
+                                recUrl: recUrl,
+                                title: recipe,
+                                ingredients: ingredients,
+                              )));
                     },
                     child: ListTile(
                       leading: Icon(

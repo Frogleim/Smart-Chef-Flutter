@@ -17,6 +17,27 @@ class GetRecieps {
   }
 }
 
+class ReciepsDescription {
+  final String url;
+  final String imageUrl;
+  final String firstStep;
+  final String secondStep;
+
+  ReciepsDescription(
+      {required this.url,
+      required this.imageUrl,
+      required this.firstStep,
+      required this.secondStep});
+
+  factory ReciepsDescription.fromJson(Map<String, dynamic> json) {
+    return ReciepsDescription(
+        url: json['url'],
+        imageUrl: json['images url'],
+        firstStep: json['step_1'],
+        secondStep: json['ste_2']);
+  }
+}
+
 Future getRecipes(String ingredients) async {
   var response = await http
       .get(Uri.parse('http://192.168.18.110/get_recipes/$ingredients'));
@@ -36,7 +57,7 @@ Future getRecipes(String ingredients) async {
   return recieps;
 }
 
-Future<String> getDetails(
+Future getDetails(
   String recUrl,
 ) async {
   final url = Uri.parse(
@@ -45,11 +66,8 @@ Future<String> getDetails(
   final headers = <String, String>{
     'Content-Type': 'application/json; charset=UTF-8',
   };
-
   final body = jsonEncode({'recipes_url': recUrl});
-
   final response = await http.post(url, headers: headers, body: body);
-
   if (response.statusCode == 200) {
     // Request successful, handle the response
     print('Response: ${response.body}');
@@ -57,5 +75,15 @@ Future<String> getDetails(
     // Request failed, handle the error
     print('Error: ${response.statusCode}');
   }
-  return response.body;
+  var jsonData = jsonDecode(response.body);
+  List<ReciepsDescription> recipesDescription = [];
+  for (var items in jsonData['Data']) {
+    ReciepsDescription recipesDesc = ReciepsDescription(
+        url: items['url'],
+        imageUrl: items['images url'],
+        firstStep: items['step_1'],
+        secondStep: items['step_2']);
+    recipesDescription.add(recipesDesc);
+  }
+  return recipesDescription;
 }

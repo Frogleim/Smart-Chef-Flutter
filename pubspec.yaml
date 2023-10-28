@@ -71,6 +71,7 @@ flutter:
     - lib/images/Rectangle 3.png
     - lib/images/Rectangle 5.png
     - lib/images/cartoon.png
+    - lib/images/no_data.jpg
 
   # To add assets to your application, add an assets section, like this:
   # assets:

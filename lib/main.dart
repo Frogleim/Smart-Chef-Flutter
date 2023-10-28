@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:smart_chef/auth/checkLogin.dart';
 import 'package:smart_chef/auth/login.dart';
 import 'package:smart_chef/models/constants.dart';
 import 'package:smart_chef/pages/intro_page.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: mainColor),
         useMaterial3: true,
       ),
-      home: const Login(),
+      home: const CheckLogin(),
     );
   }
 }
